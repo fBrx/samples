@@ -8,7 +8,7 @@
 	<version>1.0</version>
 
 	<name>JAX-RS Plain Sample App</name>
-	<url>https://github.com/schali/samples/tree/master/jaxrs-plain</url>
+	<url>https://github.com/schali/samples/wiki/jaxrs-plain</url>
 
 	<properties>
 		<java.version>1.5</java.version>
