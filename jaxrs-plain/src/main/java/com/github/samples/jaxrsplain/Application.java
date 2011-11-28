@@ -3,8 +3,21 @@ package com.github.samples.jaxrsplain;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * JAX-RS Application class to register all root resources. 
+ * 
+ * @author Florian M�ller
+ * @see javax.ws.rs.core.Application
+ */
 public class Application extends javax.ws.rs.core.Application {
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * This implementation registers the root resource {@link GreetingResource}
+	 * 
+	 * @see GreetingResource
+	 */
 	@Override
 	public Set<Class<?>> getClasses() {
 		Set<Class<?>> s = new HashSet<Class<?>>();
