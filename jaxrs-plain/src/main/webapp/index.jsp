@@ -1,5 +1,9 @@
 <html>
 <body>
-<h2>Welcome to the plain JAX-RS sample app!</h2>
+	<h1>Welcome to the plain JAX-RS sample app!</h1>
+	<ul>
+		<li><a href="service/greeting">Greetings</a></li>
+		<li><a href="service/greeting/flo">Greet Me</a></li>
+	</ul>
 </body>
 </html>
