@@ -7,7 +7,7 @@ import javax.ws.rs.Produces;
 
 /**
  * JAX-RS Resource class which can display general or personalized greeting messages.
- *
+ * 
  * @author Florian Müller
  */
 @Path("/greeting")
@@ -20,21 +20,24 @@ public class GreetingResource {
 	 */
 	@GET
 	@Produces("text/plain")
-	public String greet(){
+	public String greet() {
 		return "howdy, stranger!";
 	}
-	
-	
+
 	/**
-	 * Outputs a personalized greeting message
+	 * Outputs a personalized greeting message. If no name is supplied, output a generic message.
 	 * 
-	 * @param name name to use for personalization of the message
+	 * @param name
+	 *            name to use for personalization of the message
 	 * @return personalized greeting message
 	 */
 	@GET
 	@Path("/{name}")
 	@Produces("text/plain")
-	public String greetMe(@PathParam("name") String name){
-		return "whuuuuuuuzzzuuuuupp, " + name;
+	public String greetMe(@PathParam("name") String name) {
+		if (name == null)
+			return greet();
+		else
+			return "whuuuuuuuzzzuuuuupp, " + name;
 	}
 }
