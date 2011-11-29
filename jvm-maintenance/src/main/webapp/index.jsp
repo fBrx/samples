@@ -3,16 +3,20 @@
 <html>
 <head>
 <title>JVM Maintenance App</title>
-<link type="text/css" href="css/ui-darkness/jquery-ui-1.8.16.custom.css"
-	rel="stylesheet" />
 <link type="text/css" href="css/ui-darkness/style.css" rel="stylesheet" />
+
+<!-- include jquery ui -->
+<link type="text/css" href="css/ui-darkness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
 <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+
+<!-- init jquery ui tab container -->
 <script type="text/javascript">
 	$(function() {
 		$('#tabs').tabs();
 	});
 </script>
+
 </head>
 <body>
 	<h1>JVM Maintenance App</h1>
