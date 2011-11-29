@@ -1,7 +1,23 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_4.dtd">
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+
+	<display-name>JVM Maintenance App</display-name>
+
+	<servlet>
+		<servlet-name>ActionServlet</servlet-name>
+		<display-name>ActionServlet</display-name>
+		<description></description>
+		<servlet-class>com.github.samples.jvmmaintenance.ActionServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ActionServlet</servlet-name>
+		<url-pattern>/action</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
 </web-app>
