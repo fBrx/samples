@@ -21,16 +21,16 @@ public class ActionServlet extends HttpServlet{
 		System.out.println("operation: " + operation);
 		
 		if(operation != null && operation.equals(ACTIONS.GC.toString()))
-			performGarbageCollection();
+			performGarbageCollection(req, resp);
 		
 		else if(operation != null && operation.equals(ACTIONS.HEAPDUMP.toString()))
-			generateHeapDump();
+			generateHeapDump(req, resp);
 
 		resp.sendRedirect("");
 			
 	}
 	
-	private void generateHeapDump() {
+	private void generateHeapDump(HttpServletRequest req, HttpServletResponse resp) {
 		System.out.println("generating heap dump");
 		try{
 			//TODO generate heap dump
@@ -40,7 +40,7 @@ public class ActionServlet extends HttpServlet{
 		}
 	}
 
-	private void performGarbageCollection() {
+	private void performGarbageCollection(HttpServletRequest req, HttpServletResponse resp) {
 		System.out.println("perfoming gc");
 		try{
 			System.gc();
