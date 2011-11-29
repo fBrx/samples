@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * JAX-RS Application class to register all root resources. 
  * 
- * @author Florian M�ller
+ * @author Florian Müller
  * @see javax.ws.rs.core.Application
  */
 public class Application extends javax.ws.rs.core.Application {
