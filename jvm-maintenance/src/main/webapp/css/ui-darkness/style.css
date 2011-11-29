@@ -1,7 +1,12 @@
 /*demo page css*/
 body {
 	font: 80% "Trebuchet MS", sans-serif;
+	background: #4c4c4c;
 	margin: 50px;
+}
+
+h1 {
+	color: #FFF;
 }
 
 .demoHeaders {
