@@ -29,7 +29,7 @@
 			<div>
 				<ul>
 					<li><a href="action?<%=ActionServlet.OPERATION_PARAM%>=<%=ACTIONS.GC%>">Perform Garbage Collection</a></li>
-					<li><a href="action?<%=ActionServlet.OPERATION_PARAM%>=<%=ACTIONS.HEAPDUMP%>">Generate Heap Dump</a></li>
+					<li><a href="action?<%=ActionServlet.OPERATION_PARAM%>=<%=ACTIONS.HEAPDUMPIBM%>">Generate Heap Dump (IBM JVM)</a></li>
 				</ul>
 			</div>
 		</div>

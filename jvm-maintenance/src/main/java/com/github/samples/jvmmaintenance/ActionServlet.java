@@ -13,7 +13,7 @@ public class ActionServlet extends HttpServlet{
 	
 	public static final String OPERATION_PARAM = "operation";
 	
-	public enum ACTIONS {GC, HEAPDUMP};
+	public enum ACTIONS {GC, HEAPDUMPIBM};
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,17 +23,18 @@ public class ActionServlet extends HttpServlet{
 		if(operation != null && operation.equals(ACTIONS.GC.toString()))
 			performGarbageCollection(req, resp);
 		
-		else if(operation != null && operation.equals(ACTIONS.HEAPDUMP.toString()))
-			generateHeapDump(req, resp);
+		else if(operation != null && operation.equals(ACTIONS.HEAPDUMPIBM.toString()))
+			generateHeapDumpIbm(req, resp);
 
 		resp.sendRedirect("");
 			
 	}
 	
-	private void generateHeapDump(HttpServletRequest req, HttpServletResponse resp) {
+	private void generateHeapDumpIbm(HttpServletRequest req, HttpServletResponse resp) {
 		System.out.println("generating heap dump");
 		try{
-			//TODO generate heap dump
+			Class<?> ibmHeap = Class.forName("com.ibm.jvm.Dump.HeapDump");
+			ibmHeap.newInstance();
 		}catch (Throwable ex) {
 			System.err.println("error while generating heap dump: " + ex.getMessage());
 			ex.printStackTrace();
