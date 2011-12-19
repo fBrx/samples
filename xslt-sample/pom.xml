@@ -29,12 +29,22 @@
 				</executions>
 				<configuration>
 					<transformationSets>
+						<!-- sample 1 -->
 						<trasformationSet>
 							<dir>${basedir}/src/main/resources/xml</dir>
 							<includes>
 								<include>source1.xml</include>
 							</includes>
 							<stylesheet>${basedir}/src/main/resources/xsl/transform1.xsl</stylesheet>
+						</trasformationSet>
+						
+						<!-- sample 2 -->
+						<trasformationSet>
+							<dir>${basedir}/src/main/resources/xml</dir>
+							<includes>
+								<include>source2.xml</include>
+							</includes>
+							<stylesheet>${basedir}/src/main/resources/xsl/transform2.xsl</stylesheet>
 						</trasformationSet>
 					</transformationSets>
 				</configuration>
