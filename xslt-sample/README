@@ -1,1 +1,5 @@
 XSLT Samples
+--------------------------------
+
+1. Copy source file while omitting specified tags
+2. Output information of XSLT Engine used as a comment in the target file
