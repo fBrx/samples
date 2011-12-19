@@ -1,18 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>com.github.samples</groupId>
 	<artifactId>jaxrs-spring</artifactId>
-	<name>JAX-RS Spring Integration Sample</name>
 	<packaging>war</packaging>
 	<version>1.1-SNAPSHOT</version>
+
+	<name>JAX-RS Spring Integration Sample</name>
+	<url>https://github.com/schali/samples/wiki/jaxrs-spring</url>
+	
+	<inceptionYear>2011</inceptionYear>
+	
 	<properties>
 		<java-version>1.6</java-version>
 		<org.springframework-version>3.0.6.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.9</org.aspectj-version>
 		<org.slf4j-version>1.5.10</org.slf4j-version>
 	</properties>
+
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -93,6 +100,7 @@
 			<version>1.11-b02</version>
 		</dependency>
 	</dependencies>
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -126,6 +134,7 @@
 			</plugin>
 		</plugins>
 	</build>
+	
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -155,4 +164,5 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	
 </project>
