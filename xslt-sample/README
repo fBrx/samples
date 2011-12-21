@@ -1,5 +1,8 @@
 XSLT Samples
 --------------------------------
 
+Disclaimer: Source files are based on the cd catalog example provided by w3cschools.com in the online examples: http://www.w3schools.com/xsl/tryxslt.asp?xmlfile=cdcatalog&xsltfile=cdcatalog_ex2
+
 1. Copy source file while omitting specified tags
 2. Output information of XSLT Engine used as a comment in the target file
+3. Directly reference a XSL from the XML file
