@@ -1,3 +1,6 @@
+<%@page import="javax.naming.Binding"%>
+<%@page import="javax.naming.NamingEnumeration"%>
+<%@page import="javax.naming.InitialContext"%>
 <%@page import="com.github.samples.jvmmaintenance.ActionServlet.ACTIONS"%>
 <%@page import="com.github.samples.jvmmaintenance.ActionServlet"%>
 <html>
@@ -27,6 +30,7 @@
 			<li><a href="#tabs-2">JVM Status</a></li>
 			<li><a href="#tabs-3">System Properties</a></li>
 			<li><a href="#tabs-4">System Environment</a></li>
+			<li><a href="#tabs-5">JNDI Environment</a></li>
 		</ul>
 				<div id="tabs-1">
 			<h3><a href="#">Operations</a></h3>
@@ -71,6 +75,39 @@
 							out.println("<li>" + key + " = " + value + "</li>");
 						}
 					%>
+				</ul>
+			</div>
+		</div>
+		<div id="tabs-5">
+			<h3><a href="?jndiRoot=#tabs-5">JNDI Environment</a></h3>
+			<%
+				try{
+					String jndiRoot = request.getParameter("jndiRoot");
+					if(jndiRoot == null)
+						jndiRoot = "";
+					
+					InitialContext ctx = new InitialContext();
+			
+			%>
+			<span><b>current context:</b> <%= jndiRoot %></span>
+			<div>
+				<ul>
+				<%
+					NamingEnumeration<Binding> names = ctx.listBindings(jndiRoot);
+					while(names.hasMore()){
+						Binding b = names.next();
+						String name = b.getName();
+						Object value = b.getObject();
+						String className = value.getClass().getName();
+						String fullname = (jndiRoot == null || jndiRoot.equals("") ? "" : jndiRoot + "/") + name;
+						String linkAdress = request.getContextPath() + "?jndiRoot=" + fullname + "#tabs-5";
+						out.println("<li><b><a href=\"" + linkAdress + "\">" + name + "</a>:</b> " + value + " <i>(" + className + ")</i></li>");
+						
+					}
+				}catch(Throwable ex){
+					out.println("error retrieving jndi context: " + ex.getMessage());
+				}
+				%>
 				</ul>
 			</div>
 		</div>
