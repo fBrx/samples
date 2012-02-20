@@ -5,7 +5,7 @@
 	<groupId>com.github.samples</groupId>
 	<artifactId>jaxrs-plain</artifactId>
 	<packaging>war</packaging>
-	<version>1.1</version>
+	<version>1.2-SNAPSHOT</version>
 
 	<name>JAX-RS Plain Sample App</name>
 	<url>https://github.com/schali/samples/wiki/jaxrs-plain</url>
