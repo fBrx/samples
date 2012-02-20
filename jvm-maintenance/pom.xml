@@ -50,9 +50,9 @@
 	</dependencies>
 
 	<scm>
-		<connection>scm:git:git@github.com:schali/samples.git</connection>
-		<url>scm:git:git@github.com:schali/samples.git</url>
-		<developerConnection>scm:git:git@github.com:schali/samples.git</developerConnection>
-	</scm>
+	<connection>scm:git:git@github.com:schali/samples.git</connection>
+	<url>scm:git:git@github.com:schali/samples.git</url>
+	<developerConnection>scm:git:git@github.com:schali/samples.git</developerConnection>
+</scm>
 
 </project>
