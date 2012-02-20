@@ -4,7 +4,7 @@
 
 	<groupId>com.github.schali.samples</groupId>
 	<artifactId>xslt-samples</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 
 	<name>XSLT Samples</name>
@@ -83,7 +83,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore />
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
