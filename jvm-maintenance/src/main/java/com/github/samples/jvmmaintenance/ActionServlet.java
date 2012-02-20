@@ -1,6 +1,7 @@
 package com.github.samples.jvmmaintenance;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -58,8 +59,15 @@ public class ActionServlet extends HttpServlet{
 	private void generateHeapDumpIbm(HttpServletRequest req, HttpServletResponse resp) {
 		System.out.println("generating heap dump");
 		try{
-			Class<?> ibmHeap = Class.forName("com.ibm.jvm.Dump.HeapDump");
-			ibmHeap.newInstance();
+			//get object for ibm Dump class
+			Class<?> ibmHeap = Class.forName("com.ibm.jvm.Dump");
+			
+			//get handler to HeapDump method
+			Method heapDump = ibmHeap.getDeclaredMethod("HeapDump");
+			
+			//invoke method
+			heapDump.invoke(null, (Object[])null);
+			
 		}catch (Throwable ex) {
 			System.err.println("error while generating heap dump: " + ex.getMessage());
 			ex.printStackTrace();
@@ -67,7 +75,7 @@ public class ActionServlet extends HttpServlet{
 	}
 
 	/**
-	 * Performs a garbace collection cycle.
+	 * Request a garbage collection cycle.
 	 *  
 	 * @param req the {@link HttpServletRequest}
 	 * @param resp the {@link HttpServletResponse}
