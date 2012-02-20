@@ -53,7 +53,7 @@
 					</transformationSets>
 				</configuration>
 			</plugin>
-			
+
 			<!-- configure release plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
