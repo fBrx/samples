@@ -37,7 +37,9 @@
 			<div>
 				<ul>
 					<li><a href="action?<%=ActionServlet.OPERATION_PARAM%>=<%=ActionServlet.ACTION_GC%>">Perform Garbage Collection</a></li>
+					<li><a href="action?<%=ActionServlet.OPERATION_PARAM%>=<%=ActionServlet.ACTION_JAVADUMPIBM%>">Generate Java Dump (IBM JVM)</a></li>
 					<li><a href="action?<%=ActionServlet.OPERATION_PARAM%>=<%=ActionServlet.ACTION_HEAPDUMPIBM%>">Generate Heap Dump (IBM JVM)</a></li>
+					<li><a href="action?<%=ActionServlet.OPERATION_PARAM%>=<%=ActionServlet.ACTION_SYSTEMDUMPIBM%>">Generate System Dump (IBM JVM)</a></li>
 				</ul>
 			</div>
 		</div>

@@ -17,7 +17,9 @@ public class ActionServlet extends HttpServlet{
 	
 	/** constants for all available operations. the values are used as arguments for the {@link ActionServlet#OPERATION_PARAM} parameter */
 	public static final String ACTION_GC = "GC";
+	public static final String ACTION_JAVADUMPIBM = "JAVADUMPIBM";
 	public static final String ACTION_HEAPDUMPIBM = "HEAPDUMPIBM";
+	public static final String ACTION_SYSTEMDUMPIBM = "SYSTEMDUMPIBM";
 	
 
 	/**
@@ -43,8 +45,11 @@ public class ActionServlet extends HttpServlet{
 		if(operation != null && operation.equals(ACTION_GC.toString()))
 			performGarbageCollection(req, resp);
 		
-		else if(operation != null && operation.equals(ACTION_HEAPDUMPIBM.toString()))
-			generateHeapDumpIbm(req, resp);
+		else if(operation != null &&
+				(operation.equals(ACTION_JAVADUMPIBM.toString()) ||
+				 operation.equals(ACTION_HEAPDUMPIBM.toString()) ||
+				 operation.equals(ACTION_SYSTEMDUMPIBM.toString())))
+			generateIbmDump(req, resp, operation);
 
 		resp.sendRedirect("");
 			
@@ -55,21 +60,29 @@ public class ActionServlet extends HttpServlet{
 	 *  
 	 * @param req the {@link HttpServletRequest}
 	 * @param resp the {@link HttpServletResponse}
+	 * @param operation 
 	 */
-	private void generateHeapDumpIbm(HttpServletRequest req, HttpServletResponse resp) {
-		System.out.println("generating heap dump");
+	private void generateIbmDump(HttpServletRequest req, HttpServletResponse resp, String operation) {
+		System.out.println("generating ibm dump: " + operation);
 		try{
 			//get object for ibm Dump class
 			Class ibmHeap = Class.forName("com.ibm.jvm.Dump");
 			
-			//get handler to HeapDump method
+			//get handler to methods
+			Method javaDump = ibmHeap.getDeclaredMethod("JavaDump", new Class[] {});
 			Method heapDump = ibmHeap.getDeclaredMethod("HeapDump", new Class[] {});
+			Method systemDump = ibmHeap.getDeclaredMethod("SystemDump", new Class[] {});
 			
-			//invoke method
-			heapDump.invoke(null, (Object[])null);
+			//invoke method according to operation
+			if(operation.equals(ACTION_JAVADUMPIBM))
+				javaDump.invoke(null, (Object[])null);
+			if(operation.equals(ACTION_HEAPDUMPIBM))
+				heapDump.invoke(null, (Object[])null);
+			if(operation.equals(ACTION_SYSTEMDUMPIBM))
+				systemDump.invoke(null, (Object[])null);
 			
 		}catch (Throwable ex) {
-			System.err.println("error while generating heap dump: " + ex.getMessage());
+			System.err.println("error while generating ibm dump (" + operation + "): " + ex.getMessage());
 			ex.printStackTrace();
 		}
 	}
