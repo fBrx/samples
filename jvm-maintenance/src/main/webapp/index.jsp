@@ -1,7 +1,7 @@
+<%@page import="java.util.Iterator"%>
 <%@page import="javax.naming.Binding"%>
 <%@page import="javax.naming.NamingEnumeration"%>
 <%@page import="javax.naming.InitialContext"%>
-<%@page import="com.github.samples.jvmmaintenance.ActionServlet.ACTIONS"%>
 <%@page import="com.github.samples.jvmmaintenance.ActionServlet"%>
 <html>
 <head>
@@ -36,8 +36,8 @@
 			<h3><a href="#">Operations</a></h3>
 			<div>
 				<ul>
-					<li><a href="action?<%=ActionServlet.OPERATION_PARAM%>=<%=ACTIONS.GC%>">Perform Garbage Collection</a></li>
-					<li><a href="action?<%=ActionServlet.OPERATION_PARAM%>=<%=ACTIONS.HEAPDUMPIBM%>">Generate Heap Dump (IBM JVM)</a></li>
+					<li><a href="action?<%=ActionServlet.OPERATION_PARAM%>=<%=ActionServlet.ACTION_GC%>">Perform Garbage Collection</a></li>
+					<li><a href="action?<%=ActionServlet.OPERATION_PARAM%>=<%=ActionServlet.ACTION_HEAPDUMPIBM%>">Generate Heap Dump (IBM JVM)</a></li>
 				</ul>
 			</div>
 		</div>
@@ -57,7 +57,9 @@
 			<div>
 				<ul>
 					<%
-						for (Object key : System.getProperties().keySet()) {
+						Iterator propertyKeys = System.getProperties().keySet().iterator();
+						while(propertyKeys.hasNext()){
+							Object key = propertyKeys.next();
 							String value = System.getProperty(key.toString());
 							out.println("<li>" + key + " = " + value + "</li>");
 						}
@@ -70,8 +72,10 @@
 			<div>
 				<ul>
 					<%
-						for (String key : System.getenv().keySet()) {
-							String value = System.getenv(key);
+						Iterator envKeys = System.getenv().keySet().iterator();
+						while(envKeys.hasNext()){
+							Object key = envKeys.next();
+							String value = System.getenv(key.toString());
 							out.println("<li>" + key + " = " + value + "</li>");
 						}
 					%>
@@ -93,9 +97,9 @@
 			<div>
 				<ul>
 				<%
-					NamingEnumeration<Binding> names = ctx.listBindings(jndiRoot);
+					NamingEnumeration names = ctx.listBindings(jndiRoot);
 					while(names.hasMore()){
-						Binding b = names.next();
+						Binding b = (Binding)names.next();
 						String name = b.getName();
 						Object value = b.getObject();
 						String className = value.getClass().getName();

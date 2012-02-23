@@ -15,15 +15,16 @@ public class ActionServlet extends HttpServlet{
 	/** name of the parameter which specifies the operation to execute */
 	public static final String OPERATION_PARAM = "operation";
 	
-	/** enum of all available operations. the values are used as arguments for the {@link ActionServlet#OPERATION_PARAM} parameter */
-	public enum ACTIONS {GC, HEAPDUMPIBM};
+	/** constants for all available operations. the values are used as arguments for the {@link ActionServlet#OPERATION_PARAM} parameter */
+	public static final String ACTION_GC = "GC";
+	public static final String ACTION_HEAPDUMPIBM = "HEAPDUMPIBM";
+	
 
 	/**
 	 * Simply calls {@link #doGet(HttpServletRequest, HttpServletResponse)}
 	 * 
 	 * @see #doGet(HttpServletRequest, HttpServletResponse)
 	 */
-	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		super.doGet(req, resp);
 	}
@@ -35,15 +36,14 @@ public class ActionServlet extends HttpServlet{
 	 * @see #generateHeapDumpIbm(HttpServletRequest, HttpServletResponse)
 	 * @see #performGarbageCollection(HttpServletRequest, HttpServletResponse)
 	 */
-	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String operation = req.getParameter(OPERATION_PARAM);
 		System.out.println("operation: " + operation);
 		
-		if(operation != null && operation.equals(ACTIONS.GC.toString()))
+		if(operation != null && operation.equals(ACTION_GC.toString()))
 			performGarbageCollection(req, resp);
 		
-		else if(operation != null && operation.equals(ACTIONS.HEAPDUMPIBM.toString()))
+		else if(operation != null && operation.equals(ACTION_HEAPDUMPIBM.toString()))
 			generateHeapDumpIbm(req, resp);
 
 		resp.sendRedirect("");
@@ -60,10 +60,10 @@ public class ActionServlet extends HttpServlet{
 		System.out.println("generating heap dump");
 		try{
 			//get object for ibm Dump class
-			Class<?> ibmHeap = Class.forName("com.ibm.jvm.Dump");
+			Class ibmHeap = Class.forName("com.ibm.jvm.Dump");
 			
 			//get handler to HeapDump method
-			Method heapDump = ibmHeap.getDeclaredMethod("HeapDump");
+			Method heapDump = ibmHeap.getDeclaredMethod("HeapDump", new Class[] {});
 			
 			//invoke method
 			heapDump.invoke(null, (Object[])null);
