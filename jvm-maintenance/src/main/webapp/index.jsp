@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<%@ page contentType="text/html; charset=utf-8" %>
 <%@page import="java.util.Iterator"%>
 <%@page import="javax.naming.Binding"%>
 <%@page import="javax.naming.NamingEnumeration"%>
@@ -22,7 +24,7 @@
 
 </head>
 <body>
-	<h1>JVM Maintenance App</h1>
+	<h1>JVM Maintenance App <span style="font-size: 10px">by Florian Müller</span></h1>
 
 	<div id="tabs">
 		<ul>
