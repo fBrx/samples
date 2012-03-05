@@ -33,6 +33,7 @@
 			<li><a href="#tabs-3">System Properties</a></li>
 			<li><a href="#tabs-4">System Environment</a></li>
 			<li><a href="#tabs-5">JNDI Environment</a></li>
+			<li><a href="#tabs-6">Request Information</a></li>
 		</ul>
 				<div id="tabs-1">
 			<h3><a href="#">Operations</a></h3>
@@ -118,6 +119,36 @@
 				%>
 				</ul>
 			</div>
+		</div>
+		<div id="tabs-6">
+			<h3><a href="?jndiRoot=#tabs-5">Request Information</a></h3>
+			<h4>Cookies</h4>
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Value</th>
+						<th>Domain</th>
+						<th>Path</th>
+					</tr>
+				</thead>
+				<tbody>
+				<%
+					Cookie[] cookies = request.getCookies();
+					for(int i=0; i<cookies.length; i++){
+						Cookie c = cookies[i];
+				%>
+					<tr>
+						<td><%= c.getName() %></td>
+						<td><%= c.getValue() %></td>
+						<td><%= c.getDomain() %></td>
+						<td><%= c.getPath() %></td>
+					</tr>
+				<%
+					}
+				%>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </body>
