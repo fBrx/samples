@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<%@page import="java.util.Arrays"%>
+<%@page import="java.util.Enumeration"%>
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@page import="java.util.Iterator"%>
 <%@page import="javax.naming.Binding"%>
@@ -122,8 +124,39 @@
 		</div>
 		<div id="tabs-6">
 			<h3><a href="?jndiRoot=#tabs-5">Request Information</a></h3>
+			<h4>Headers</h4>
+			<table class="ui-widget-content">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Value</th>
+					</tr>
+				</thead>
+				<tbody>
+				<%
+					Enumeration headerNames = request.getHeaderNames();
+					while(headerNames.hasMoreElements()){
+						String headerName = (String)headerNames.nextElement();
+						Enumeration headerValues = request.getHeaders(headerName);
+						String headerValueString = "";
+						while(headerValues.hasMoreElements()){
+							headerValueString += "[" + headerValues.nextElement() + "], ";
+						}
+						if(headerValueString.endsWith(", "))
+							headerValueString = headerValueString.substring(0, headerValueString.length() - 2);
+				%>
+					<tr>
+						<td><%= headerName %></td>
+						<td><%= headerValueString %></td>
+					</tr>
+				<%
+					}
+				%>
+				</tbody>
+			</table>
+			
 			<h4>Cookies</h4>
-			<table>
+			<table class="ui-widget-content">
 				<thead>
 					<tr>
 						<th>Name</th>
