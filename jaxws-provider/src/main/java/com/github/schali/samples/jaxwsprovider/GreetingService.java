@@ -14,8 +14,13 @@ public class GreetingService {
 	
 	@WebResult(name="greeting")
 	public String greetMe(@WebParam(name="name") String name) {
-		if(ctx == null || ctx.getUserPrincipal() == null)
+		if(ctx == null || 
+		   ctx.getUserPrincipal() == null || 
+		   ctx.getUserPrincipal().getName() == null || 
+		   ctx.getUserPrincipal().getName().equals(""))
+			
 			return "Howdy, " + name + "!";
+		
 		else
 			return "Howdy, " + name + "! You are authenticated as " + ctx.getUserPrincipal().getName() + ".";
 	}
