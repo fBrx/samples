@@ -16,8 +16,23 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
+<!-- 	<filter> -->
+<!-- 		<filter-name>securityFilterChain</filter-name> -->
+<!-- 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> -->
+<!-- 	</filter> -->
+	
+<!-- 	<filter-mapping> -->
+<!-- 		<filter-name>securityFilterChain</filter-name> -->
+<!-- 		<url-pattern>/GreetingService/*</url-pattern> -->
+<!-- 	</filter-mapping> -->
+
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+	
+	<security-role>
+		<description>Admin Role</description>
+		<role-name>ADMIN</role-name>
+	</security-role>
 	
 </web-app>

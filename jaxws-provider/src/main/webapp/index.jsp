@@ -1,5 +1,5 @@
 <html>
 <body>
-	<h1>Welcome to the JAX-WS sample app!</h1>
+	<h1>Welcome to the JAX-WS sample provider!</h1>
 </body>
 </html>

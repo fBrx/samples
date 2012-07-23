@@ -13,6 +13,6 @@ public class Publisher
     	String endpoint = "http://localhost:1337/greeting";
     	System.out.println("publishing greeting service to " + endpoint);
     	
-    	Endpoint.publish(endpoint, new GreetingService());
+    	Endpoint.publish(endpoint, new Greeting());
     }
 }
