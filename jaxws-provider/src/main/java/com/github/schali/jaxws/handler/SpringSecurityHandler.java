@@ -1,4 +1,4 @@
-package com.github.schali.samples.jaxwsprovider.jaxws;
+package com.github.schali.jaxws.handler;
 
 import java.util.Set;
 import java.util.logging.Level;
@@ -16,6 +16,8 @@ import javax.xml.ws.handler.soap.SOAPMessageContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
+
+import com.github.schali.jaxws.spring.security.JaxWsPreAuthenticatedProcessingFilter;
 
 public class SpringSecurityHandler extends SpringBeanAutowiringSupport implements SOAPHandler<SOAPMessageContext> {
 

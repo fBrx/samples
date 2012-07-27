@@ -7,33 +7,43 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-   	<beans:bean id="preAuthenticatedUserDetailsService" class="org.springframework.security.web.authentication.preauth.PreAuthenticatedGrantedAuthoritiesUserDetailsService" />
+	<beans:bean id="preAuthenticatedUserDetailsService"
+		class="org.springframework.security.web.authentication.preauth.PreAuthenticatedGrantedAuthoritiesUserDetailsService" />
 
-   	<beans:bean id="preAuthenticatedAuthenticationProvider" class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">
-		<beans:property name="preAuthenticatedUserDetailsService" ref="preAuthenticatedUserDetailsService" />
-    </beans:bean>
-    
-    <security:authentication-manager alias="authenticationManager">
-        <security:authentication-provider ref="preAuthenticatedAuthenticationProvider" />
-    </security:authentication-manager>
-    
-    <beans:bean id="jaxwsPreAuthFilter" class="com.github.schali.samples.jaxwsprovider.jaxws.JaxWsPreAuthenticatedProcessingFilter">
-        <beans:property name="authenticationManager" ref="authenticationManager"/>
-        <beans:property name="authenticationDetailsSource">
-            <beans:bean class="org.springframework.security.web.authentication.preauth.j2ee.J2eeBasedPreAuthenticatedWebAuthenticationDetailsSource">
-                <beans:property name="mappableRolesRetriever">
-                    <beans:bean class="org.springframework.security.web.authentication.preauth.j2ee.WebXmlMappableAttributesRetriever" />
-                </beans:property>
-                <beans:property name="userRoles2GrantedAuthoritiesMapper">
-                    <beans:bean class="org.springframework.security.core.authority.mapping.SimpleAttributes2GrantedAuthoritiesMapper">
-                        <beans:property name="convertAttributeToUpperCase" value="true"/>
-                        <beans:property name="attributePrefix" value="" />
-                    </beans:bean>
-                </beans:property>
-            </beans:bean>
-        </beans:property>
-    </beans:bean>
-    
-	<security:global-method-security jsr250-annotations="enabled" />
+	<beans:bean id="preAuthenticatedAuthenticationProvider"
+		class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">
+		<beans:property name="preAuthenticatedUserDetailsService"
+			ref="preAuthenticatedUserDetailsService" />
+	</beans:bean>
+
+	<security:authentication-manager alias="authenticationManager">
+		<security:authentication-provider
+			ref="preAuthenticatedAuthenticationProvider" />
+	</security:authentication-manager>
+
+	<beans:bean id="jaxwsPreAuthFilter"
+		class="com.github.schali.jaxws.spring.security.JaxWsPreAuthenticatedProcessingFilter">
+		<beans:property name="authenticationManager" ref="authenticationManager" />
+		<beans:property name="authenticationDetailsSource">
+			<beans:bean
+				class="org.springframework.security.web.authentication.preauth.j2ee.J2eeBasedPreAuthenticatedWebAuthenticationDetailsSource">
+				<beans:property name="mappableRolesRetriever">
+					<beans:bean
+						class="org.springframework.security.web.authentication.preauth.j2ee.WebXmlMappableAttributesRetriever" />
+				</beans:property>
+				<beans:property name="userRoles2GrantedAuthoritiesMapper">
+					<beans:bean
+						class="org.springframework.security.core.authority.mapping.SimpleAttributes2GrantedAuthoritiesMapper">
+						<beans:property name="convertAttributeToUpperCase"
+							value="true" />
+						<beans:property name="attributePrefix" value="" />
+					</beans:bean>
+				</beans:property>
+			</beans:bean>
+		</beans:property>
+	</beans:bean>
+
+	<security:global-method-security
+		jsr250-annotations="enabled" />
 
 </beans:beans>

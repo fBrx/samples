@@ -1,4 +1,4 @@
-package com.github.schali.samples.jaxwsprovider.jaxws.utils;
+package com.github.schali.util;
 
 import java.io.OutputStream;
 

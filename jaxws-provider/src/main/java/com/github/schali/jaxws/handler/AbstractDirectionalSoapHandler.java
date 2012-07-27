@@ -1,4 +1,4 @@
-package com.github.schali.samples.jaxwsprovider.jaxws.utils;
+package com.github.schali.jaxws.handler;
 
 import java.util.Set;
 

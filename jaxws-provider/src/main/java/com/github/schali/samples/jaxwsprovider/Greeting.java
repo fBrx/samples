@@ -12,7 +12,6 @@ import javax.xml.ws.WebServiceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-import com.github.schali.samples.jaxwsprovider.service.GreetingService;
 
 @WebService
 @HandlerChain(file = "handler-chain.xml")

@@ -4,15 +4,15 @@
 	<handler-chain>
 		<handler>
 			<handler-name>LoggingInHandler</handler-name>
-			<handler-class>com.github.schali.samples.jaxwsprovider.jaxws.utils.LoggingInHandler</handler-class>
+			<handler-class>com.github.schali.jaxws.handler.LoggingInHandler</handler-class>
 		</handler>
 		<handler>
 			<handler-name>LoggingOutHandler</handler-name>
-			<handler-class>com.github.schali.samples.jaxwsprovider.jaxws.utils.LoggingOutHandler</handler-class>
+			<handler-class>com.github.schali.jaxws.handler.LoggingOutHandler</handler-class>
 		</handler>
 		<handler>
 			<handler-name>SpringSecurityHandler</handler-name>
-			<handler-class>com.github.schali.samples.jaxwsprovider.jaxws.SpringSecurityHandler</handler-class>
+			<handler-class>com.github.schali.jaxws.handler.SpringSecurityHandler</handler-class>
 		</handler>
 		
 	</handler-chain>

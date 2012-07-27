@@ -1,4 +1,4 @@
-package com.github.schali.samples.jaxwsprovider.jaxws;
+package com.github.schali.jaxws.spring.security;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

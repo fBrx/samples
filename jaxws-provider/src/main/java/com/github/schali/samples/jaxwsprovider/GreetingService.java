@@ -1,4 +1,4 @@
-package com.github.schali.samples.jaxwsprovider.service;
+package com.github.schali.samples.jaxwsprovider;
 
 import java.util.Collection;
 import java.util.logging.Logger;
