@@ -12,11 +12,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.mockito.Mockito;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-
-import com.github.schali.samples.jaxwsprovider.service.GreetingService;
 
 @RunWith(BlockJUnit4ClassRunner.class)
 public class GreetingServiceTest {
@@ -36,7 +31,7 @@ public class GreetingServiceTest {
 	
 	@Test
 	public void testGreetMeNullContext() {
-		String result = svc.greetMe(NAME, null);
+		String result = svc.greetMe(NAME);
 		
 		assertNotNull(result);
 		assertEquals(String.format(FORMAT, NAME), result);
@@ -47,7 +42,7 @@ public class GreetingServiceTest {
 		WebServiceContext ctx = Mockito.mock(WebServiceContext.class);
 		Mockito.when(ctx.getUserPrincipal()).thenReturn(null);
 		
-		String result = svc.greetMe(NAME, ctx);
+		String result = svc.greetMe(NAME);
 		
 		assertNotNull(result);
 		assertEquals(String.format(FORMAT, NAME), result);
@@ -60,7 +55,7 @@ public class GreetingServiceTest {
 		Mockito.when(p.getName()).thenReturn(null);
 		Mockito.when(ctx.getUserPrincipal()).thenReturn(p);
 		
-		String result = svc.greetMe(NAME, ctx);
+		String result = svc.greetMe(NAME);
 		
 		assertNotNull(result);
 		assertEquals(String.format(FORMAT, NAME), result);
@@ -91,7 +86,7 @@ public class GreetingServiceTest {
 		svc.setFormat(null);
 		svc.setFormatAuthorized(null);
 		
-		String result = svc.greetMe(NAME, null);
+		String result = svc.greetMe(NAME);
 		
 		assertNotNull(result);
 		assertEquals("<not initialized>", result);

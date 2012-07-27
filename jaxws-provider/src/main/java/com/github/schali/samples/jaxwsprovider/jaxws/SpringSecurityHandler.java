@@ -1,9 +1,10 @@
 package com.github.schali.samples.jaxwsprovider.jaxws;
 
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.annotation.Resource;
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.namespace.QName;
@@ -11,33 +12,38 @@ import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.handler.soap.SOAPHandler;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
-import javax.xml.ws.soap.SOAPFaultException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 public class SpringSecurityHandler extends SpringBeanAutowiringSupport implements SOAPHandler<SOAPMessageContext> {
 
-	@Inject
+	Logger LOG = Logger.getLogger(getClass().getName());
+	
+	@Autowired
 	JaxWsPreAuthenticatedProcessingFilter authFilter;
 	
 	@Resource
-	WebServiceContext ctx;
+	WebServiceContext wsContext;
 	
-	@Override
 	public void close(MessageContext msgContext) { }
 
-	@Override
 	public boolean handleFault(SOAPMessageContext msgContext) { return false; }
 
-	@Override
 	public boolean handleMessage(SOAPMessageContext msgContext) {
 		boolean outbound = (Boolean) msgContext.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY); 
 
 		if(!outbound) {
 			HttpServletRequest request = (HttpServletRequest) msgContext.get(MessageContext.SERVLET_REQUEST);
 			HttpServletResponse response = (HttpServletResponse) msgContext.get(MessageContext.SERVLET_RESPONSE);
-			authFilter.authenticateJaxWs(ctx, request, response);
+			try {
+				authFilter.authenticateJaxWs(wsContext, request, response);
+			}catch (Throwable ex) {
+				SecurityContextHolder.clearContext();
+				LOG.severe(ex.getMessage());
+				LOG.log(Level.SEVERE, ex.getMessage(), ex);
+			}
 			
 		}else {
 			SecurityContextHolder.clearContext();
@@ -46,7 +52,6 @@ public class SpringSecurityHandler extends SpringBeanAutowiringSupport implement
 		return true;
 	}
 
-	@Override
 	public Set<QName> getHeaders() { return null; }
 
 }

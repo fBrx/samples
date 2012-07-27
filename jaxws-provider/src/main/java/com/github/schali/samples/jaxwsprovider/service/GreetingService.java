@@ -1,28 +1,26 @@
 package com.github.schali.samples.jaxwsprovider.service;
 
 import java.util.Collection;
+import java.util.logging.Logger;
 
 import javax.annotation.security.RolesAllowed;
-import javax.xml.ws.WebServiceContext;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 public class GreetingService {
 
+	private Logger LOG = Logger.getLogger(GreetingService.class.getName());
+	
 	private static final String DEFAULT_FORMAT = "<not initialized>";
 
 	private String format = DEFAULT_FORMAT;
 	private String formatAuthorized = DEFAULT_FORMAT;
 	
-	public String greetMe(String name, WebServiceContext ctx) {
-		SecurityContext secctx = SecurityContextHolder.getContext();
-		
-		if(ctx == null || 
-		   ctx.getUserPrincipal() == null || 
-		   ctx.getUserPrincipal().getName() == null || 
-		   ctx.getUserPrincipal().getName().equals(""))
+	public String greetMe(String name) {
+		if( SecurityContextHolder.getContext() == null || 
+			SecurityContextHolder.getContext().getAuthentication() == null || 
+			SecurityContextHolder.getContext().getAuthentication().getName() == null)
 			
 			return String.format(format, name);
 		
@@ -31,10 +29,7 @@ public class GreetingService {
 	}
 	
 	@RolesAllowed("ADMIN")
-	public String isInRole(String roleName, WebServiceContext ctx) {
-		SecurityContext secCtx = SecurityContextHolder.getContext();
-		System.out.println(secCtx);
-		
+	public String isInRole(String roleName) {
 		Collection<? extends GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 		for(GrantedAuthority a : authorities)
 			if(a.getAuthority().equals(roleName))
@@ -47,7 +42,7 @@ public class GreetingService {
 		if(format == null || format.equals(""))
 			format = DEFAULT_FORMAT;
 		
-		System.out.println("setting format to " + format);
+		LOG.config("setting format to " + format);
 		this.format = format;
 	}
 
@@ -55,7 +50,7 @@ public class GreetingService {
 		if(format == null || format.equals(""))
 			format = DEFAULT_FORMAT;
 		
-		System.out.println("setting formatAuthorized to " + formatAuthorized);
+		LOG.config("setting formatAuthorized to " + formatAuthorized);
 		this.formatAuthorized = formatAuthorized;
 	}
 	
