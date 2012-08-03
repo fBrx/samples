@@ -48,13 +48,13 @@ public class ActionServlet extends HttpServlet{
 		LOG.info("operation: " + operation);
 		
 		if(operation != null && operation.equals(ACTION_GC))
-			performGarbageCollection(req, resp);
+			performGarbageCollection();
 		
 		else if(operation != null &&
 				(operation.equals(ACTION_JAVADUMPIBM) ||
 				 operation.equals(ACTION_HEAPDUMPIBM) ||
 				 operation.equals(ACTION_SYSTEMDUMPIBM)))
-			generateIbmDump(req, resp, operation);
+			generateIbmDump(operation);
 
 		resp.sendRedirect("");
 			
@@ -67,11 +67,11 @@ public class ActionServlet extends HttpServlet{
 	 * @param resp the {@link HttpServletResponse}
 	 * @param operation 
 	 */
-	private void generateIbmDump(HttpServletRequest req, HttpServletResponse resp, String operation) {
+	private void generateIbmDump(String operation) {
 		LOG.info("generating ibm dump: " + operation);
 		try{
-			//get object for ibm Dump class
-			Class ibmHeap = Class.forName("com.ibm.jvm.Dump");
+            // get object for ibm Dump class
+            Class ibmHeap = Class.forName("com.ibm.jvm.Dump");
 			
 			//get handler to methods
 			Method javaDump = ibmHeap.getDeclaredMethod("JavaDump", new Class[] {});
@@ -98,7 +98,7 @@ public class ActionServlet extends HttpServlet{
 	 * @param resp the {@link HttpServletResponse}
 	 * @see System#gc()
 	 */
-	private void performGarbageCollection(HttpServletRequest req, HttpServletResponse resp) {
+	private void performGarbageCollection() {
 		LOG.info("perfoming gc");
 		try{
 			System.gc();
