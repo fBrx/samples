@@ -2,6 +2,7 @@ package com.github.samples.jvmmaintenance;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -85,9 +86,8 @@ public class ActionServlet extends HttpServlet{
 			if(operation.equals(ACTION_SYSTEMDUMPIBM))
 				systemDump.invoke(null, (Object[])null);
 			
-		}catch (Throwable ex) {
-			System.err.println("error while generating ibm dump (" + operation + "): " + ex.getMessage());
-			ex.printStackTrace();
+		}catch (Exception ex) {
+			LOG.log(Level.SEVERE, "error while generating ibm dump (" + operation + "): " + ex.getMessage(), ex);
 		}
 	}
 
@@ -102,9 +102,8 @@ public class ActionServlet extends HttpServlet{
 		LOG.info("perfoming gc");
 		try{
 			System.gc();
-		}catch (Throwable ex) {
-			System.err.println("error while performing gc: " + ex.getMessage());
-			ex.printStackTrace();
+		}catch (Exception ex) {
+			LOG.log(Level.SEVERE, "error while performing gc: " + ex.getMessage(), ex);
 		}
 	}
 }
