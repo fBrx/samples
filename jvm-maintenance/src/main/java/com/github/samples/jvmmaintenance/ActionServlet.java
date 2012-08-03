@@ -15,7 +15,7 @@ public class ActionServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	/** The {@link Logger} of the class */
-	private final Logger LOG = Logger.getLogger(getClass().getName());
+	private static final Logger LOG = Logger.getLogger(ActionServlet.class.getName());
 
 	/** name of the parameter which specifies the operation to execute */
 	public static final String OPERATION_PARAM = "operation";
@@ -47,13 +47,13 @@ public class ActionServlet extends HttpServlet{
 		String operation = req.getParameter(OPERATION_PARAM);
 		LOG.info("operation: " + operation);
 		
-		if(operation != null && operation.equals(ACTION_GC.toString()))
+		if(operation != null && operation.equals(ACTION_GC))
 			performGarbageCollection(req, resp);
 		
 		else if(operation != null &&
-				(operation.equals(ACTION_JAVADUMPIBM.toString()) ||
-				 operation.equals(ACTION_HEAPDUMPIBM.toString()) ||
-				 operation.equals(ACTION_SYSTEMDUMPIBM.toString())))
+				(operation.equals(ACTION_JAVADUMPIBM) ||
+				 operation.equals(ACTION_HEAPDUMPIBM) ||
+				 operation.equals(ACTION_SYSTEMDUMPIBM)))
 			generateIbmDump(req, resp, operation);
 
 		resp.sendRedirect("");
