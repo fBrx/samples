@@ -2,6 +2,7 @@ package com.github.samples.jvmmaintenance;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +13,9 @@ public class ActionServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	
+	/** The {@link Logger} of the class */
+	private final Logger LOG = Logger.getLogger(getClass().getName());
+
 	/** name of the parameter which specifies the operation to execute */
 	public static final String OPERATION_PARAM = "operation";
 	
@@ -40,7 +44,7 @@ public class ActionServlet extends HttpServlet{
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String operation = req.getParameter(OPERATION_PARAM);
-		System.out.println("operation: " + operation);
+		LOG.info("operation: " + operation);
 		
 		if(operation != null && operation.equals(ACTION_GC.toString()))
 			performGarbageCollection(req, resp);
@@ -63,7 +67,7 @@ public class ActionServlet extends HttpServlet{
 	 * @param operation 
 	 */
 	private void generateIbmDump(HttpServletRequest req, HttpServletResponse resp, String operation) {
-		System.out.println("generating ibm dump: " + operation);
+		LOG.info("generating ibm dump: " + operation);
 		try{
 			//get object for ibm Dump class
 			Class ibmHeap = Class.forName("com.ibm.jvm.Dump");
@@ -95,7 +99,7 @@ public class ActionServlet extends HttpServlet{
 	 * @see System#gc()
 	 */
 	private void performGarbageCollection(HttpServletRequest req, HttpServletResponse resp) {
-		System.out.println("perfoming gc");
+		LOG.info("perfoming gc");
 		try{
 			System.gc();
 		}catch (Throwable ex) {
