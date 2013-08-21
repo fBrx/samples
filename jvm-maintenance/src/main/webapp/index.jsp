@@ -164,6 +164,7 @@
 						<th>Value</th>
 						<th>Domain</th>
 						<th>Path</th>
+						<th>MaxAge</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -177,6 +178,7 @@
 						<td><%= c.getValue() %></td>
 						<td><%= c.getDomain() %></td>
 						<td><%= c.getPath() %></td>
+						<td><%= c.getMaxAge() %></td>
 					</tr>
 				<%
 					}
