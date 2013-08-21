@@ -50,6 +50,15 @@
 							</includes>
 							<stylesheet>${basedir}/src/main/resources/xsl/transform2.xsl</stylesheet>
 						</trasformationSet>
+						
+						<!-- fargo sample -->
+						<trasformationSet>
+							<dir>${basedir}/src/main/resources/xml</dir>
+							<includes>
+								<include>fargoSample.opml</include>
+							</includes>
+							<stylesheet>${basedir}/src/main/resources/xsl/fargo2html.xsl</stylesheet>
+						</trasformationSet>
 					</transformationSets>
 				</configuration>
 			</plugin>
