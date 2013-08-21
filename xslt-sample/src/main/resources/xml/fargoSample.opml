@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="../xsl/fargo2html.xsl" ?>
+
+<opml version="2.0">
+	<head>
+		<title>[AWP] Outline Spec</title>
+		<dateModified>Thu, 06 Jun 2013 10:53:07 GMT</dateModified>
+		<expansionState>1,4,7,12,15,16</expansionState>
+		<longTitle></longTitle>
+		<description></description>
+		</head>
+	<body>
+		<outline text="Kick Off vorbereiten" created="Tue, 04 Jun 2013 12:53:56 GMT">
+			<outline text="Mission Statement erarbeiten" created="Tue, 04 Jun 2013 08:08:50 GMT"/>
+			<outline text="&quot;Spannungsdreieck&quot; aufzeigen" created="Tue, 04 Jun 2013 08:35:47 GMT"/>
+			</outline>
+		<outline text="Abhängigkeiten klären" created="Thu, 06 Jun 2013 10:50:58 GMT">
+			<outline text="Projekte" created="Thu, 06 Jun 2013 10:51:03 GMT"/>
+			<outline text="Anwendungsplattformen / Basiskomponenten" created="Thu, 06 Jun 2013 10:51:05 GMT"/>
+			</outline>
+		<outline text="Analyse ADF / JAGUAR Komponenten" created="Tue, 04 Jun 2013 15:11:41 GMT">
+			<outline text="Workshop IED/IEC wg. Applikations TÜV" created="Tue, 04 Jun 2013 15:11:59 GMT"/>
+			<outline text="Code-Analyse ADF von Fadil auswerten" created="Tue, 04 Jun 2013 15:12:23 GMT"/>
+			<outline text="Rückmeldungen KAP auswerten" created="Tue, 04 Jun 2013 15:13:42 GMT"/>
+			<outline text="Stakeholder Interviews auswerten" created="Tue, 04 Jun 2013 15:14:07 GMT"/>
+			</outline>
+		<outline text="Lösungsbausteine / Architekturkonzept erarbeiten" created="Tue, 04 Jun 2013 08:17:14 GMT">
+			<outline text="Frameworkschichten" created="Tue, 04 Jun 2013 08:17:25 GMT"/>
+			<outline text="" created="Tue, 04 Jun 2013 08:17:34 GMT"/>
+			</outline>
+		<outline text="Mapping von Anforderungen auf bestehende Komponenten/Konzepte" created="Tue, 04 Jun 2013 15:14:57 GMT">
+			<outline text="Gap Analyse" created="Tue, 04 Jun 2013 09:24:26 GMT">
+				<outline text="was ist bereits vorhanden" created="Thu, 06 Jun 2013 10:50:40 GMT"/>
+				<outline text="was fehlt?" created="Tue, 04 Jun 2013 09:25:05 GMT"/>
+				<outline text="was muss angepasst werden?" created="Tue, 04 Jun 2013 09:25:09 GMT"/>
+				</outline>
+			</outline>
+		<outline text="Stufenplan für Umsetzung erarbeiten" created="Tue, 04 Jun 2013 15:15:46 GMT"/>
+		</body>
+	</opml>
