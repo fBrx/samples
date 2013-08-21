@@ -6,6 +6,7 @@
 <%@page import="javax.naming.Binding"%>
 <%@page import="javax.naming.NamingEnumeration"%>
 <%@page import="javax.naming.InitialContext"%>
+<%@page import="javax.servlet.http.Cookie"%>
 <%@page import="com.github.samples.jvmmaintenance.ActionServlet"%>
 <html>
 <head>
