@@ -12,7 +12,33 @@
 	<inceptionYear>2011</inceptionYear>
 	
 	<modules>
+		<module>jaxrs-plain</module>
+		<module>jaxrs-spring</module>
+		<module>jaxws-provider</module>
 		<module>juel-sample</module>
+		<module>jvm-maintenance</module>
+		<module>xslt-sample</module>
 	</modules>
+	
+	<properties>
+		<java.version>1.5</java.version>
+	</properties>
+	
+	<build>
+		<plugins>
+
+			<!-- configure java version -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
 
 </project>
