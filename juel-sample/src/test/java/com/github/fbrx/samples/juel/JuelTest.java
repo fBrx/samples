@@ -16,6 +16,9 @@ import com.github.fbrx.samples.juel.model.Customer;
 
 import de.odysseus.el.util.SimpleContext;
 
+/**
+ * Unit Tests for working directly with the Java Expression Language.
+ */
 public class JuelTest {
 
 	private Contract cont1;
@@ -23,6 +26,9 @@ public class JuelTest {
 
 	ELContext elCtx;
 
+	/**
+	 * Initialized the {@link ELContext} with the {@link #cust1} variable. Will be executed before each test.
+	 */
 	@Before
 	public void before() {
 		this.cust1 = new Customer("flo", "müller", 28, null);
@@ -37,6 +43,9 @@ public class JuelTest {
 		this.elCtx.getVariableMapper().setVariable("cust1", elFactory.createValueExpression(this.cust1, Customer.class));
 	}
 
+	/**
+	 * the expected variable is not present in the {@link ELContext}
+	 */
 	@Test(expected = PropertyNotFoundException.class)
 	public void testBeanNotFound() {
 		ValueExpression ve = ExpressionFactory.newInstance().createValueExpression(this.elCtx, "${narf.lastname}", String.class);
@@ -44,6 +53,9 @@ public class JuelTest {
 		Assert.assertEquals("müller", ve.getValue(this.elCtx));
 	}
 
+	/**
+	 * lookup of a boolean property
+	 */
 	@Test
 	public void testBooleanExpression() {
 		ValueExpression ve = ExpressionFactory.newInstance().createValueExpression(this.elCtx, "${cust1.age > 30}", Boolean.class);
@@ -51,6 +63,9 @@ public class JuelTest {
 		Assert.assertFalse((Boolean) ve.getValue(this.elCtx));
 	}
 
+	/**
+	 * lookup of a string property
+	 */
 	@Test
 	public void testPropertyLookup() {
 		ValueExpression ve = ExpressionFactory.newInstance().createValueExpression(this.elCtx, "${cust1.lastname}", String.class);
@@ -61,6 +76,9 @@ public class JuelTest {
 		Assert.assertEquals("brüssel", ve.getValue(this.elCtx));
 	}
 
+	/**
+	 * lookup of an not existing property
+	 */
 	@Test(expected = PropertyNotFoundException.class)
 	public void testPropertyNotFound() {
 		ValueExpression ve = ExpressionFactory.newInstance().createValueExpression(this.elCtx, "${cust1.narf}", String.class);
@@ -68,6 +86,9 @@ public class JuelTest {
 		Assert.assertEquals("müller", ve.getValue(this.elCtx));
 	}
 
+	/**
+	 * navigation through an object graph
+	 */
 	@Test
 	public void testTreeNavigation() {
 		this.cust1.setContracts(Arrays.asList(this.cont1));

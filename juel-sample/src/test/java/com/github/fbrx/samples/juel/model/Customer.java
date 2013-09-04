@@ -2,6 +2,9 @@ package com.github.fbrx.samples.juel.model;
 
 import java.util.Collection;
 
+/**
+ * Dummy customer class for unit tests.
+ */
 public class Customer {
 
 	private int age;

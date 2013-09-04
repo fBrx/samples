@@ -2,6 +2,9 @@ package com.github.fbrx.samples.juel.model;
 
 import java.util.Date;
 
+/**
+ * Dummy contract class for unit tests.
+ */
 public class Contract {
 
 	private double amount;
