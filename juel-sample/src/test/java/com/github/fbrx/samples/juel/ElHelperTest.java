@@ -2,6 +2,8 @@ package com.github.fbrx.samples.juel;
 
 import java.util.Arrays;
 
+import javax.el.ELException;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,6 +47,14 @@ public class ElHelperTest {
 		Double d = ElHelper.resolveEl(this.cust1, "contracts[0].amount", Double.class);
 
 		Assert.assertEquals((Double) 100000d, d);
+	}
+
+	/**
+	 * test of invalid expression
+	 */
+	@Test(expected = ELException.class)
+	public void testResolveElInvalidExpression() {
+		ElHelper.resolveEl(this.cust1, "${me.lastname}", Object.class);
 	}
 
 	/**
