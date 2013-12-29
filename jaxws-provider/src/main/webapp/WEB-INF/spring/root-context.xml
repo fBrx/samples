@@ -9,7 +9,7 @@
 
 	<beans:import resource="security.xml"/>
 
-	<beans:bean id="greetingService" class="com.github.schali.samples.jaxwsprovider.GreetingService">
+	<beans:bean id="greetingService" class="com.github.fbrx.samples.jaxwsprovider.GreetingService">
 		<beans:property name="format" value="Howdy, %s!" />
 		<beans:property name="formatAuthorized" value="Howdy, %s! You are authenticated as %s." />
 	</beans:bean>

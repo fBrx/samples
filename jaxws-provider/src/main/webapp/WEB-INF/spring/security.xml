@@ -22,7 +22,7 @@
 	</security:authentication-manager>
 
 	<beans:bean id="jaxwsPreAuthFilter"
-		class="com.github.schali.jaxws.spring.security.JaxWsPreAuthenticatedProcessingFilter">
+		class="com.github.fbrx.jaxws.spring.security.JaxWsPreAuthenticatedProcessingFilter">
 		<beans:property name="authenticationManager" ref="authenticationManager" />
 		<beans:property name="authenticationDetailsSource">
 			<beans:bean

@@ -1,4 +1,4 @@
-package com.github.schali.jaxws.handler;
+package com.github.fbrx.jaxws.handler;
 
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
@@ -10,7 +10,7 @@ import javax.xml.soap.SOAPMessage;
 import javax.xml.soap.SOAPPart;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
 
-import com.github.schali.util.XMLUtils;
+import com.github.fbrx.util.XMLUtils;
 
 public class LoggingOutHandler extends AbstractDirectionalSoapHandler<SOAPMessageContext> {
 

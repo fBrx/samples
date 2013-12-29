@@ -1,4 +1,4 @@
-package com.github.schali.jaxws.handler;
+package com.github.fbrx.jaxws.handler;
 
 import java.util.Set;
 

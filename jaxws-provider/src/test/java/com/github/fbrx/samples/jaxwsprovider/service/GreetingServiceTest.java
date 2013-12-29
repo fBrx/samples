@@ -1,4 +1,4 @@
-package com.github.schali.samples.jaxwsprovider.service;
+package com.github.fbrx.samples.jaxwsprovider.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.mockito.Mockito;
 
-import com.github.schali.samples.jaxwsprovider.GreetingService;
+import com.github.fbrx.samples.jaxwsprovider.GreetingService;
 
 @RunWith(BlockJUnit4ClassRunner.class)
 public class GreetingServiceTest {

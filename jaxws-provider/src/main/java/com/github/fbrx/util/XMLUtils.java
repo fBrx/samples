@@ -1,4 +1,4 @@
-package com.github.schali.util;
+package com.github.fbrx.util;
 
 import java.io.OutputStream;
 

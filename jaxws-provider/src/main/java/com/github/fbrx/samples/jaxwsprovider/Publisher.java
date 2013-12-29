@@ -1,4 +1,4 @@
-package com.github.schali.samples.jaxwsprovider;
+package com.github.fbrx.samples.jaxwsprovider;
 
 import javax.xml.ws.Endpoint;
 

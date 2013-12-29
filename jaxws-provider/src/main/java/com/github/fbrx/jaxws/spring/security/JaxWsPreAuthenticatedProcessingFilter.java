@@ -1,4 +1,4 @@
-package com.github.schali.jaxws.spring.security;
+package com.github.fbrx.jaxws.spring.security;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
