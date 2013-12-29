@@ -27,7 +27,7 @@
 
 </head>
 <body>
-	<h1>JVM Maintenance App <span style="font-size: 10px">by Florian Müller</span></h1>
+	<h1>JVM Maintenance App <span style="font-size: 10px">by Florian Bruessel [fBrx]</span></h1>
 
 	<div id="tabs">
 		<ul>
