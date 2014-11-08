@@ -36,12 +36,14 @@ echo "<?xml version='1.0' encoding='utf-8'?>
 </tomcat-users>
 " > /opt/apache-tomcat-7.0.56/conf/tomcat-users.xml
 
-#checkout and compile project
-git clone https://github.com/fBrx/samples.git /vagrant/code
-mvn clean package -f /vagrant/code/jvm-maintenance/pom.xml
+#compile project
+mvn clean package -f /vagrant/pom.xml
 
 #create link in webapps dir (to war or folder)
-ln -s /vagrant/code/jvm-maintenance/target/jvm-maintenance-1.5-SNAPSHOT /opt/apache-tomcat-7.0.56/webapps/jvm-maintenance
+ln -s /vagrant/jvm-maintenance/target/jvm-maintenance-1.5-SNAPSHOT /opt/apache-tomcat-7.0.56/webapps/jvm-maintenance
+ln -s /vagrant/jaxrs-spring/target/jaxrs-spring-1.2-SNAPSHOT/ /opt/apache-tomcat-7.0.56/webapps/jaxrs-spring
+ln -s /vagrant/jaxrs-plain/target/jaxrs-plain-1.2-SNAPSHOT/ /opt/apache-tomcat-7.0.56/webapps/jaxrs-plain
+ln -s /vagrant/jaxws-provider/target/jaxws-provider-1.3-SNAPSHOT/ /opt/apache-tomcat-7.0.56/webapps/jaxws-provider
 
 #run server
 /opt/apache-tomcat-7.0.56/bin/startup.sh
